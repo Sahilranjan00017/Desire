@@ -1,16 +1,5 @@
-import { FormEvent, useState } from "react";
-import {
-  ArrowRight,
-  Award,
-  BookOpen,
-  CheckCircle2,
-  MapPin,
-  Mail,
-  Phone,
-  Star,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { FormEvent, useEffect, useState } from "react";
+import { Award, BookOpen, CheckCircle2, MapPin, Mail, Phone, Star, TrendingUp, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -22,6 +11,19 @@ import {
 } from "@/components/ui/select";
 
 const WHATSAPP_NUMBER = "918873399866";
+
+const heroSlides = [
+  {
+    src: "/desire-campus.jpg",
+    alt: "Desire Institute campus entrance",
+    objectPosition: "center center",
+  },
+  {
+    src: "/desire-classroom.jpg",
+    alt: "Desire Institute classroom session",
+    objectPosition: "center center",
+  },
+];
 
 const courseCards = [
   {
@@ -122,9 +124,23 @@ const videos = [
 ];
 
 export default function Index() {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [name, setName] = useState("");
   const [studentClass, setStudentClass] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   const handleWhatsAppSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -146,142 +162,123 @@ export default function Index() {
 
   return (
     <div className="w-full overflow-hidden bg-background">
-      <section className="relative border-b border-slate-200 bg-[radial-gradient(circle_at_top_left,_rgba(12,74,110,0.18),_transparent_30%),linear-gradient(180deg,_#f8fbff_0%,_#eef6fb_100%)]">
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-primary/10 via-secondary/10 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-16 sm:pb-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="relative z-10">
-              <div className="inline-flex items-center rounded-full border border-secondary/20 bg-white/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur">
-                Trusted coaching for Class 11 and 12 Physics
-              </div>
-              <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-primary sm:text-5xl lg:text-6xl">
-                Build a strong NEET & JEE foundation with Desire Institute.
-              </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700">
-                Start early, learn Physics with clarity, and prepare with a focused
-                system designed for serious Class 11 and 12 students.
-              </p>
+      <section className="relative isolate overflow-hidden border-b border-slate-200 bg-slate-950">
+        <div className="absolute inset-0">
+          {heroSlides.map((slide, index) => (
+            <img
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              className={`hero-slide absolute inset-0 h-full w-full ${
+                activeSlide === index ? "is-active" : ""
+              }`}
+              style={{ objectPosition: slide.objectPosition }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,250,255,0.18)_0%,rgba(247,250,255,0.08)_28%,rgba(2,6,23,0.08)_58%,rgba(2,6,23,0.2)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.14),transparent_22%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.14),transparent_26%)]" />
+        </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#book-demo">
-                  <Button size="lg" className="rounded-full px-7">
-                    Book Demo
-                    <ArrowRight />
-                  </Button>
-                </a>
-                <a href="#courses">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="rounded-full border-primary/20 bg-white/80 px-7 text-primary hover:bg-primary hover:text-white"
-                  >
-                    Explore Courses
-                  </Button>
-                </a>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-16 sm:pb-20">
+          <div className="flex min-h-[420px] items-center justify-end lg:min-h-[calc(100vh-9rem)]">
+            <div
+              id="book-demo"
+              className="hero-fade-up relative z-10 w-full max-w-[420px] rounded-[1.75rem] border border-white/80 bg-white/95 p-6 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-xl sm:p-7"
+            >
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">
+                    Free Counselling
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold text-primary">
+                    Book your seat with Desire Institute
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    Our counsellor will contact you within 24 hours.
+                  </p>
+                </div>
+                <div className="rounded-full bg-secondary/10 p-3 text-secondary">
+                  <CheckCircle2 className="h-5 w-5" />
+                </div>
               </div>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <p className="text-3xl font-extrabold text-primary">10+</p>
-                  <p className="mt-1 text-sm text-slate-600">Years of Physics mentoring</p>
+              <form className="space-y-4" onSubmit={handleWhatsAppSubmit}>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-700" htmlFor="student-name">
+                    Name
+                  </label>
+                  <Input
+                    id="student-name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    placeholder="Enter student name"
+                    required
+                    className="h-11 rounded-xl border-slate-200"
+                  />
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <p className="text-3xl font-extrabold text-primary">11 & 12</p>
-                  <p className="mt-1 text-sm text-slate-600">Dedicated batches for focused learning</p>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-700">
+                    Class
+                  </label>
+                  <Select value={studentClass} onValueChange={setStudentClass} required>
+                    <SelectTrigger className="h-11 rounded-xl border-slate-200">
+                      <SelectValue placeholder="Select class" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="11">11</SelectItem>
+                      <SelectItem value="12">12</SelectItem>
+                      <SelectItem value="Foundation">Foundation</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <p className="text-3xl font-extrabold text-primary">NEET + JEE</p>
-                  <p className="mt-1 text-sm text-slate-600">Concept-first preparation strategy</p>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-slate-700" htmlFor="contact-number">
+                    Contact Number
+                  </label>
+                  <Input
+                    id="contact-number"
+                    type="tel"
+                    inputMode="numeric"
+                    value={contactNumber}
+                    onChange={(event) => setContactNumber(event.target.value)}
+                    placeholder="Enter contact number"
+                    required
+                    className="h-11 rounded-xl border-slate-200"
+                  />
+                </div>
+
+                <Button type="submit" size="lg" className="w-full rounded-xl bg-primary">
+                  Get Free Counselling
+                </Button>
+              </form>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl bg-slate-50 px-4 py-3 text-center">
+                  <p className="text-sm font-semibold text-primary">Expert Faculty</p>
+                </div>
+                <div className="rounded-2xl bg-slate-50 px-4 py-3 text-center">
+                  <p className="text-sm font-semibold text-primary">Regular Tests</p>
+                </div>
+                <div className="rounded-2xl bg-slate-50 px-4 py-3 text-center">
+                  <p className="text-sm font-semibold text-primary">Parent Updates</p>
                 </div>
               </div>
             </div>
 
-            <div className="relative z-10">
-              <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_24px_80px_rgba(8,47,73,0.16)]">
-                <img
-                  src="https://i.postimg.cc/6pwKWLRZ/j96Bc.jpg"
-                  alt="Desire Institute hero visual"
-                  className="h-[300px] w-full rounded-[1.5rem] object-cover object-top sm:h-[360px] lg:h-[400px]"
+            <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center gap-2 px-4">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.src}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-2.5 rounded-full transition-all ${
+                    activeSlide === index ? "w-10 bg-white" : "w-2.5 bg-white/60"
+                  }`}
                 />
-                <div className="absolute left-7 top-7 max-w-[220px] rounded-2xl bg-primary/90 px-5 py-4 text-white shadow-lg backdrop-blur">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary-foreground/80">
-                    Desire Institute
-                  </p>
-                  <p className="mt-2 text-xl font-bold leading-tight">
-                    Smart start for ambitious Physics students.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                id="book-demo"
-                className="relative -mt-10 mx-4 rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_18px_48px_rgba(8,47,73,0.16)] sm:mx-8 sm:p-7"
-              >
-                <div className="mb-5 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">
-                      Book Demo
-                    </p>
-                    <h2 className="mt-2 text-2xl font-bold text-primary">
-                      Send your details on WhatsApp
-                    </h2>
-                  </div>
-                  <div className="rounded-full bg-secondary/10 p-3 text-secondary">
-                    <CheckCircle2 className="h-5 w-5" />
-                  </div>
-                </div>
-
-                <form className="space-y-4" onSubmit={handleWhatsAppSubmit}>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700" htmlFor="student-name">
-                      Name
-                    </label>
-                    <Input
-                      id="student-name"
-                      value={name}
-                      onChange={(event) => setName(event.target.value)}
-                      placeholder="Enter student name"
-                      required
-                      className="h-11 rounded-xl border-slate-200"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">
-                      Class
-                    </label>
-                    <Select value={studentClass} onValueChange={setStudentClass} required>
-                      <SelectTrigger className="h-11 rounded-xl border-slate-200">
-                        <SelectValue placeholder="Select class" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="11">11</SelectItem>
-                        <SelectItem value="12">12</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700" htmlFor="contact-number">
-                      Contact Number
-                    </label>
-                    <Input
-                      id="contact-number"
-                      type="tel"
-                      inputMode="numeric"
-                      value={contactNumber}
-                      onChange={(event) => setContactNumber(event.target.value)}
-                      placeholder="Enter contact number"
-                      required
-                      className="h-11 rounded-xl border-slate-200"
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full rounded-xl">
-                    Send on WhatsApp
-                  </Button>
-                </form>
-              </div>
+              ))}
             </div>
           </div>
         </div>
