@@ -5,17 +5,19 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="mb-4 text-lg font-bold">Desire Institute</div>
+        <div className="mb-12 grid grid-cols-1 gap-8 text-center md:grid-cols-4 md:text-left">
+          <div className="flex flex-col items-center md:items-start">
+            <img
+              src="/desire-logo.png"
+              alt="Desire Institute logo"
+              className="mb-4 h-16 w-16 object-contain"
+            />
+            <div className="mb-2 text-lg font-bold">Desire Institute</div>
             <p className="text-gray-300 text-sm">
               Transform your physics, transform your future. Expert coaching for NEET & JEE after 10th class.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-gray-300">
@@ -42,19 +44,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+              <li className="flex items-center justify-center space-x-2 text-gray-300 hover:text-white transition-colors md:justify-start">
                 <MapPin size={16} />
                 <span>Bengaluru, Karnataka</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+              <li className="flex items-center justify-center space-x-2 text-gray-300 hover:text-white transition-colors md:justify-start">
                 <Phone size={16} />
                 <a href="tel:+918873399866">+91 88733 99866</a>
               </li>
-              <li className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+              <li className="flex items-center justify-center space-x-2 text-gray-300 hover:text-white transition-colors md:justify-start">
                 <Mail size={16} />
                 <a href="mailto:info@desireinstitute.com">
                   info@desireinstitute.com
@@ -63,10 +64,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social Media */}
           <div>
             <h4 className="font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
+            <div className="flex justify-center space-x-4 md:justify-start">
               <a
                 href="https://www.instagram.com/adarshbharti1"
                 target="_blank"
@@ -87,7 +87,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
           <p>© 2026 Desire Institute. All rights reserved.</p>
         </div>

@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import InstituteChatbot from "./components/InstituteChatbot";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => (
     <Header />
     <main className="flex-grow">{children}</main>
     <Footer />
+    <InstituteChatbot />
   </div>
 );
 

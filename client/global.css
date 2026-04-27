@@ -138,6 +138,10 @@
     transform: scale(1);
   }
 
+  .testimonial-marquee {
+    animation: testimonial-marquee 32s linear infinite;
+  }
+
   @keyframes hero-fade-up {
     from {
       opacity: 0;
@@ -149,11 +153,22 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes testimonial-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 0.75rem));
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-up,
-  .hero-slide {
+  .hero-slide,
+  .testimonial-marquee {
     animation: none !important;
     transition: none !important;
     transform: none !important;
