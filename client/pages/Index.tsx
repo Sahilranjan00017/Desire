@@ -118,20 +118,19 @@ const facultyMembers = [
   {
     name: "Satya Narayan Mahto",
     subject: "Director | Desire Institute",
-    experience: "10 Years Experience",
     image: "/faculty-satya-narayan-mahto.jpg",
     accent: Award,
   },
   {
     name: "Vikash Bharti",
-    subject: "Biology Faculty",
+    subject: "Managing Director || Wizard of Biology",
     experience: "10 Years Experience",
     image: "/faculty-vikash-bharti.jpg",
     accent: CheckCircle2,
   },
   {
     name: "Adarsh Bharti",
-    subject: "Founder & CEO | Physics Wizard",
+    subject: "Founder & CEO || Wizard of Physics ",
     experience: "10 Years Experience",
     image: "/faculty-adarsh-bharti.jpg",
     accent: Star,
