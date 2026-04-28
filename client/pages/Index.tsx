@@ -116,6 +116,34 @@ const valueHighlights = [
 
 const facultyMembers = [
   {
+    name: "Satya Narayan Mahto",
+    subject: "Director | Desire Institute",
+    experience: "10 Years Experience",
+    image: "/faculty-satya-narayan-mahto.jpg",
+    accent: Award,
+  },
+  {
+    name: "Vikash Bharti",
+    subject: "Biology Faculty",
+    experience: "10 Years Experience",
+    image: "/faculty-vikash-bharti.jpg",
+    accent: CheckCircle2,
+  },
+  {
+    name: "Adarsh Bharti",
+    subject: "Founder & CEO | Physics Wizard",
+    experience: "10 Years Experience",
+    image: "/faculty-adarsh-bharti.jpg",
+    accent: Star,
+  },
+  {
+    name: "Kapil Kumar",
+    subject: "Physics Faculty",
+    experience: "8 Years Experience",
+    image: "/faculty-kapil-kumar.jpg",
+    accent: Award,
+  },
+  {
     name: "Gautam Singh",
     subject: "Chemistry Faculty",
     experience: "10 Years Experience",
@@ -130,13 +158,6 @@ const facultyMembers = [
     accent: TrendingUp,
   },
   {
-    name: "Kapil Kumar",
-    subject: "Physics Faculty",
-    experience: "8 Years Experience",
-    image: "/faculty-kapil-kumar.jpg",
-    accent: Award,
-  },
-  {
     name: "Kamlesh Kumar",
     subject: "Mathematics Faculty",
     experience: "7 Years Experience",
@@ -144,24 +165,10 @@ const facultyMembers = [
     accent: BookOpen,
   },
   {
-    name: "Adarsh Bharti",
-    subject: "Founder & CEO | Physics Wizard",
-    experience: "10 Years Experience",
-    image: "/faculty-adarsh-bharti.jpg",
-    accent: Star,
-  },
-  {
-    name: "Vikash Bharti",
-    subject: "Biology Faculty",
-    experience: "10 Years Experience",
-    image: "/faculty-vikash-bharti.jpg",
-    accent: CheckCircle2,
-  },
-  {
     name: "Nitish Kumar Karn",
     subject: "English Faculty",
     experience: "8 Years Experience",
-    image: "",
+    image: "/faculty-nitish-kumar-karn.png",
     accent: Languages,
   },
 ];
